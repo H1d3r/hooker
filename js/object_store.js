@@ -37,7 +37,7 @@ function object2Json(objectId) {
 	}
 }
 
-function Object2String(objectId) {
+function object2String(objectId) {
 	var radarPropertiesClz = Java.use("gz.radar.objects.ObjectsStore");
 	var obj = radarPropertiesClz.getObject(objectId+"");
 	if (obj) {
@@ -46,3 +46,16 @@ function Object2String(objectId) {
 		log("Not found this object.");
 	}
 }
+
+function getObject(objectId) {
+	var radarPropertiesClz = Java.use("gz.radar.objects.ObjectsStore");
+	var obj = radarPropertiesClz.getObject(objectId+"");
+	return obj;
+}
+
+
+function getField(javaObject, fieldName) {
+    var X = Java.use("gz.util.X");
+    return X.getField(javaObject, fieldName);
+};
+

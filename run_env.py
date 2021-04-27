@@ -50,10 +50,14 @@ function getField(javaObject, fieldName) {
 };
 
 function storeObjectAndLog(javaObject) {
-    var className = getClassName(javaObject);
-    var ObjectsStore = Java.use("gz.radar.objects.ObjectsStore");
-    var objectId = ObjectsStore.storeObject(javaObject);
-    console.log(className + " ObjectsStoreId: " +objectId);
+    try {
+        var className = getClassName(javaObject);
+        var ObjectsStore = Java.use("gz.radar.objects.ObjectsStore");
+        var objectId = ObjectsStore.storeObject(javaObject);
+        console.log(className + " ObjectsStoreId: " +objectId);
+    } catch (error) {
+        console.error("你传的不是一个有效的java对象!");
+    }
 };
 
 """
